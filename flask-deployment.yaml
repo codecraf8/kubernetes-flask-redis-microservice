@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: flask
+    tier: frontend
+  name: flask-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask
+      tier: frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: flask
+        tier: frontend
+    spec:
+      containers:
+      - image: apcelent/flask-web:v1
+        name: flask-app
+        ports:
+        - containerPort: 5000
+        resources: {}
+        imagePullPolicy: Never  
+status: {}
